@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Getting Started Extension's Popup</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        outline: none;
+      }
+
+      body {
+        background-color: #2b343a;
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 100%;
+        padding: 20px;
+        margin: 0;
+        width: 300px;
+      }
+
+      ::-webkit-scrollbar {
+        width: 0;
+        display: none;
+        visibility: hidden;
+      }
+
+      .btn {
+        border-radius: 3px;
+        font-weight: 400;
+        line-height: 1.25;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: .5rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+        -webkit-transition: all .2s ease-in-out;
+        transition: all .3s ease-in-out;
+      }
+
+      .btn.btn_green {
+        color: #fff;
+        background-color: #5cb85c;
+        border-color: #5cb85c;
+      }
+
+      .btn.btn_green:hover {
+        background-color: #449d44;
+        border-color: #419641;
+      }
+
+      .btn.btn_full-size {
+        width: 100%;
+      }
+
+      .input-group {
+        display: flex;
+        height: 38px;
+        background-color: #3c4449;
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+
+      .input-group__icon {
+        width: 38px;
+        height: 38px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        cursor: pointer;
+        fill: rgba(255,255,255, .7);
+        -webkit-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+        background: transparent;
+        border: none;
+      }
+
+      .input-group__icon svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .input-group__icon:hover {
+        background-color: #555d61;
+      }
+
+      .input-group__icon:active {
+        fill: #333;
+        background-color: #c0c2c4;
+      }
+
+      .form-control {
+        padding: .5rem .75rem;
+        border: none;
+        background-color: #333c42;
+        color: hsla(0,0%,100%,.7);
+        width: 100%;
+      }
+
+      .form-control:focus {
+        background-color: transparent;
+      }
+
+      .margin-wrapper {
+        margin-bottom: 20px;
+      }
+
+      .user-list {
+        display: flex;
+        flex-direction: column;
+        max-height: 250px;
+        overflow-y: auto;
+      }
+
+      .user-list__item {
+        display: flex;
+        align-items: center;
+        height: 38px;
+        flex-shrink: 0;
+      }
+
+      .user-list__item:nth-child(odd) {
+        background-color: #2f383e;
+      }
+
+      .user-list__avatar {
+        height: 32px;
+        width: 32px;
+        vertical-align: bottom;
+      }
+
+      .user-list__username {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-grow: 1;
+        padding: 0 10px;
+        color: hsla(0,0%,100%,.7);
+      }
+    </style>
+    <script src="js/vendor.js"></script>
+  </head>
+  <body>
+    <div class="margin-wrapper">
+      <button id="stats" class="btn btn_green btn_full-size">Статистика</button>
+      <div class="error"></div>
+    </div>
+
+    <div class="input-group">
+      <input id="steamId" class="form-control" type="text" placeholder="Steam ID">
+      <button id="addSteamId" class="input-group__icon" title="Добавить">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42">
+          <path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="userList" class="user-list"></div>
+    <!--<ul style="min-width: 700px;">-->
+    <!--<li>Current URL: <span id="url"></span></li>-->
+    <!--<li>Current Time: <span id="time"></span></li>-->
+    <!--</ul>-->
+    <!--<button id="countUp">count up</button>-->
+    <!--<button id="changeBackground">change background</button>-->
+    <script src="js/popup.js"></script>
+  </body>
+</html>
+
