@@ -1,0 +1,11 @@
+<div class="user-list-item">
+    <a target="_blank" [attr.href]="steamUser.profileurl">
+        <img class="user-list-item__avatar" [attr.src]="steamUser.avatar">
+    </a>
+    <span class="user-list-item__username">{{ steamUser.personaname }}</span>
+    <button class="user-list-item__icon" title="Удалить" (click)="onRemove.emit(steamUser)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42">
+            <path d="M0 19h42v4H0z"/>
+        </svg>
+    </button>
+</div>

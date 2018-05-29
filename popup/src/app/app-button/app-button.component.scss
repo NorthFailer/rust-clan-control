@@ -1,0 +1,28 @@
+.app-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 38px;
+    border-radius: 3px;
+    border: none;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .3s ease-in-out;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &_green {
+        color: #fff;
+        background-color: #5cb85c;
+
+        &:hover {
+            background-color: #449d44;
+        }
+    }
+}

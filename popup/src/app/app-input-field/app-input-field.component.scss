@@ -1,0 +1,53 @@
+@import "../../common/variables";
+
+.app-input-field {
+    display: flex;
+    height: 38px;
+    background-color: $color-dark-blue;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    &__input {
+        background-color: transparent;
+        padding: .5rem .75rem;
+        border: none;
+        color: hsla(0,0%,100%,.7);
+        width: 100%;
+        -webkit-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+
+        &:focus {
+            background-color: $color-dark-gray;
+        }
+    }
+
+    &__button {
+        background-color: $color-dark-gray;
+        width: 38px;
+        height: 38px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        cursor: pointer;
+        fill: rgba(255,255,255, .7);
+        border: none;
+        -webkit-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+
+        & > svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        &:hover {
+            background-color: $color-gray;
+        }
+
+        &:active {
+            fill: #333;
+            background-color: $color-light;
+        }
+    }
+}

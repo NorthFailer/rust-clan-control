@@ -1,0 +1,54 @@
+.user-list-item {
+    display: flex;
+    align-items: center;
+    height: 38px;
+    flex-shrink: 0;
+
+    &:nth-child(odd) {
+        background-color: #2f383e;
+    }
+
+    &__avatar {
+        height: 32px;
+        width: 32px;
+        vertical-align: bottom;
+    }
+
+    &__username {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-grow: 1;
+        padding: 0 10px;
+        color: hsla(0,0%,100%,.7);
+    }
+
+    &__icon {
+        width: 38px;
+        height: 38px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        cursor: pointer;
+        fill: rgba(255,255,255, .7);
+        -webkit-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+        background: transparent;
+        border: none;
+
+        &:hover {
+            background-color: #555d61;
+        }
+
+        &:active {
+            fill: #333;
+            background-color: #c0c2c4;
+        }
+
+        & svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}

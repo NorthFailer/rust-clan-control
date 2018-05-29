@@ -1,0 +1,19 @@
+<div class="app-user-list">
+    <div class="app-user-list__row">
+        <app-button color="green" (click)="getStats()">Статистика</app-button>
+    </div>
+    <div class="app-user-list__row">
+        <app-input-field [formControl]="steamIdInput"
+                         (onSearch)="handleOnSearch()"
+                         placeholder="Steam ID">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42">
+                <path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"/>
+            </svg>
+        </app-input-field>
+    </div>
+    <div class="app-user-list__list" *ngIf="userListService.steamUsers.length">
+        <user-list-item *ngFor="let steamUser of userListService.steamUsers"
+                        [steamUser]="steamUser"
+                        (onRemove)="handleOnRemove($event)"></user-list-item>
+    </div>
+</div>

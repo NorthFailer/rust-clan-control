@@ -7,5 +7,10 @@
         "rootDir": "src",
         "outDir": "dist/js",
         "noEmitOnError": true
-    }
+    },
+    "exclude": [
+        "node_modules",
+        "stats",
+        "popup"
+    ]
 }

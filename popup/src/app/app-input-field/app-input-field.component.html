@@ -1,0 +1,14 @@
+<div class="app-input-field">
+    <input #input
+           class="app-input-field__input"
+           (focus)="onFocus()"
+           (blur)="onBlur()"
+           [attr.type]="type"
+           placeholder="{{ placeholder }}"
+           [(ngModel)]="value"
+           (keyup.enter)="onSearch.emit()"
+           [disabled]="disabled">
+    <button class="app-input-field__button" (click)="onSearch.emit()">
+        <ng-content></ng-content>
+    </button>
+</div>
