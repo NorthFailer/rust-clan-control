@@ -49,6 +49,9 @@ class ContentScript {
                     });
 
                     return data;
+                }).filter((mergedUser) => {
+	                // clear users who not join server all time
+                	return !Array.isArray(mergedUser);
                 });
 
                 chrome.runtime.sendMessage({

@@ -3,6 +3,8 @@ import { Observable, Subject } from "rxjs/index";
 
 export class StatsModel {
 	playtime: number;
+	kills_player: number;
+	deaths_player: number;
 
 	constructor(data: any) {
 		Object.assign(this, data);
@@ -10,6 +12,11 @@ export class StatsModel {
 
 	get playtimeString(): string {
 		return `${(this.playtime / 60 / 60).toFixed(2)} ч.`;
+	}
+
+	get KDA(): string {
+		const rawKDA = this.kills_player / this.deaths_player;
+		return rawKDA ? rawKDA.toFixed(2) : '0';
 	}
 }
 
