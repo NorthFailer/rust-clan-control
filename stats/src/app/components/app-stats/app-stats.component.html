@@ -1,0 +1,80 @@
+<div class="app-stats">
+    <div class="app-stats__navigation"></div>
+    <div class="app-stats__content">
+        <div class="app-stats__table">
+            <div class="app-stats__row app-stats__row_fixed">
+                <div class="app-stats__cell"></div>
+                <div class="app-stats__cell app-stats__cell_large"></div>
+                <div class="app-stats__cell">Время</div>
+                <div class="app-stats__cell">KDA</div>
+                <div class="app-stats__cell">Kills</div>
+                <div class="app-stats__cell">Deaths</div>
+                <div class="app-stats__cell">Suicide</div>
+                <div class="app-stats__cell">
+                    <img class="app-stats__icon" src="/stats/assets/barrel.png">
+                </div>
+                <div class="app-stats__cell">
+                    <img class="app-stats__icon" src="/stats/assets/sulfur.png">
+                </div>
+                <div class="app-stats__cell">
+                    <img class="app-stats__icon" src="/stats/assets/metal.png">
+                </div>
+                <div class="app-stats__cell">
+                    <img class="app-stats__icon" src="/stats/assets/stone.png">
+                </div>
+                <div class="app-stats__cell">
+                    <img class="app-stats__icon" src="/stats/assets/wood.png">
+                </div>
+                <div class="app-stats__cell">
+                    <img class="app-stats__icon" src="/stats/assets/leather.png">
+                </div>
+                <div class="app-stats__cell">
+                    <img class="app-stats__icon" src="/stats/assets/cloth.png">
+                </div>
+                <div class="app-stats__cell">
+                    <img class="app-stats__icon" src="/stats/assets/fat.png">
+                </div>
+            </div>
+            <div class="app-stats__row" *ngFor="let stat of stats">
+                <div class="app-stats__cell">
+                    <a target="_blank" [attr.href]="stat.steamData.profileurl">
+                        <img [attr.src]="stat.steamData.avatarmedium">
+                    </a>
+                </div>
+                <div class="app-stats__cell app-stats__cell_large">
+                    <span class="app-stats__username">{{ stat.steamData.personaname }}</span>
+                </div>
+                <div class="app-stats__cell">{{ stat.playtimeString }}</div>
+                <div class="app-stats__cell">{{ stat.kills_player / stat.deaths_player || 0 }}</div>
+                <div class="app-stats__cell">{{ stat.kills_player }}</div>
+                <div class="app-stats__cell">{{ stat.deaths_player }}</div>
+                <div class="app-stats__cell">{{ stat.deaths_suicide }}</div>
+                <div class="app-stats__cell">{{ stat.kills_barrel }}</div>
+                <div class="app-stats__cell">{{ stat.harvests_sulfur_ore }}</div>
+                <div class="app-stats__cell">{{ stat.harvests_metal_ore }}</div>
+                <div class="app-stats__cell">{{ stat.harvests_stones }}</div>
+                <div class="app-stats__cell">{{ stat.harvests_wood }}</div>
+                <div class="app-stats__cell">{{ stat.harvests_leather }}</div>
+                <div class="app-stats__cell">{{ stat.harvests_cloth }}</div>
+                <div class="app-stats__cell">{{ stat.harvests_fat_animal }}</div>
+            </div>
+            <div class="app-stats__row" *ngIf="stats.length > 1">
+                <div class="app-stats__cell">Итого</div>
+                <div class="app-stats__cell app-stats__cell_large"></div>
+                <div class="app-stats__cell"></div>
+                <div class="app-stats__cell"></div>
+                <div class="app-stats__cell"></div>
+                <div class="app-stats__cell"></div>
+                <div class="app-stats__cell"></div>
+                <div class="app-stats__cell">{{ getTotal('kills_barrel') }}</div>
+                <div class="app-stats__cell">{{ getTotal('harvests_sulfur_ore') }}</div>
+                <div class="app-stats__cell">{{ getTotal('harvests_metal_ore') }}</div>
+                <div class="app-stats__cell">{{ getTotal('harvests_stones') }}</div>
+                <div class="app-stats__cell">{{ getTotal('harvests_wood') }}</div>
+                <div class="app-stats__cell">{{ getTotal('harvests_leather') }}</div>
+                <div class="app-stats__cell">{{ getTotal('harvests_cloth') }}</div>
+                <div class="app-stats__cell">{{ getTotal('harvests_fat_animal') }}</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+@import "../../../../../popup/src/common/variables";
+
+.app-stats {
+    background-color: $color-primary;
+    display: flex;
+    min-height: 100vh;
+
+    &__content {
+        margin: 0 auto;
+    }
+
+    &__navigation {
+        width: 300px;
+        background: $color-light;
+    }
+
+    &__table {
+        display: flex;
+        flex-direction: column;
+        margin-top: 84px;
+    }
+
+    &__row {
+        display: flex;
+
+        &:nth-child(odd) {
+            background-color: #2f383e;
+        }
+
+        &_fixed {
+            position: fixed;
+            top: 0;
+        }
+    }
+
+    &__cell {
+        width: 64px;
+        height: 64px;
+        padding: 10px;
+        box-sizing: content-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &_large {
+            width: 100px;
+        }
+    }
+
+    &__username {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__icon {
+        width: 64px;
+        height: 64px;
+        vertical-align: bottom;
+    }
+}
