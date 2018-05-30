@@ -5,11 +5,9 @@ class Background {
                 chrome.storage.local.set({'injector:stats': request.data}, function() {
                     console.log('injector:stats Value is set to ', request.data);
                 });
-                chrome.tabs.create({ url: "stats.html" });
+                chrome.tabs.create({ url: "stats/index.html" });
             }
         });
-
-        // localStorage.setItem('injector:stats', JSON.stringify(mergedData));
     }
 }
 

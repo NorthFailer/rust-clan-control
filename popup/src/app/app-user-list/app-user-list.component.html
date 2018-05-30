@@ -11,6 +11,9 @@
             </svg>
         </app-input-field>
     </div>
+    <div class="app-user-list__total-users" *ngIf="userListService.steamUsers.length">
+        Всего игроков: {{ userListService.steamUsers.length }}
+    </div>
     <div class="app-user-list__list" *ngIf="userListService.steamUsers.length">
         <user-list-item *ngFor="let steamUser of userListService.steamUsers"
                         [steamUser]="steamUser"

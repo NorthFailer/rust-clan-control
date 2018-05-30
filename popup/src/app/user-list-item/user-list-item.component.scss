@@ -1,12 +1,12 @@
+:host:nth-child(odd) {
+    background-color: #2f383e;
+}
+
 .user-list-item {
     display: flex;
     align-items: center;
     height: 38px;
     flex-shrink: 0;
-
-    &:nth-child(odd) {
-        background-color: #2f383e;
-    }
 
     &__avatar {
         height: 32px;
