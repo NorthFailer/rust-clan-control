@@ -1,0 +1,63 @@
+@import "../../../../../popup/src/common/variables";
+
+.app-stats {
+  &__table {
+    background-color: #2b343a;
+    display: flex;
+    flex-direction: column;
+    padding-top: 48px;
+    width: 100%;
+  }
+
+  &__row {
+    background-color: #2b343a;
+    display: flex;
+
+    &:nth-child(odd) {
+      background-color: #2f383e;
+    }
+
+    &_fixed {
+      position: fixed;
+      top: 0;
+      align-self: flex-end;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+
+  &__copy-input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  &__cell {
+    cursor: default;
+    width: 40px;
+    height: 40px;
+    box-sizing: content-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_large {
+      padding: 0 8px;
+      flex-grow: 1;
+      justify-content: flex-start;
+    }
+  }
+
+  &__username {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__icon,
+  &__avatar {
+    width: 32px;
+    height: 32px;
+    vertical-align: bottom;
+  }
+}

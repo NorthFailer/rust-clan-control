@@ -1,0 +1,35 @@
+.app-stats-cell {
+  white-space: nowrap;
+
+  &__wrapper {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_hoverable:hover {
+    background: #c3c4c7;
+    color: #333;
+    padding: 2px 4px;
+    line-height: 12px;
+  }
+
+  &__higher {
+    color: green;
+    top: 0;
+  }
+
+  &__lower {
+    color: red;
+    bottom: 0;
+  }
+
+  &__lower,
+  &__higher {
+    font-size: 10px;
+    position: absolute;
+  }
+}

@@ -1,0 +1,108 @@
+<div #table class="app-stats__table">
+  <div class="app-stats__copy-input" #copyInput contenteditable="true">{{ screenShotSrc }}</div>
+  <div class="app-stats__row app-stats__row_fixed">
+    <div class="app-stats__cell"></div>
+    <div class="app-stats__cell app-stats__cell_large"></div>
+    <div class="app-stats__cell">Время</div>
+    <div class="app-stats__cell">KDA</div>
+    <div class="app-stats__cell">K</div>
+    <div class="app-stats__cell">D</div>
+    <div class="app-stats__cell">S</div>
+    <div class="app-stats__cell">
+      <img class="app-stats__icon" src="/stats/assets/barrel.png">
+    </div>
+    <div class="app-stats__cell">
+      <img class="app-stats__icon" src="/stats/assets/sulfur.png">
+    </div>
+    <div class="app-stats__cell">
+      <img class="app-stats__icon" src="/stats/assets/metal.png">
+    </div>
+    <div class="app-stats__cell">
+      <img class="app-stats__icon" src="/stats/assets/stone.png">
+    </div>
+    <div class="app-stats__cell">
+      <img class="app-stats__icon" src="/stats/assets/wood.png">
+    </div>
+    <div class="app-stats__cell">
+      <img class="app-stats__icon" src="/stats/assets/leather.png">
+    </div>
+    <div class="app-stats__cell">
+      <img class="app-stats__icon" src="/stats/assets/cloth.png">
+    </div>
+    <div class="app-stats__cell">
+      <img class="app-stats__icon" src="/stats/assets/fat.png">
+    </div>
+  </div>
+  <div class="app-stats__row" *ngFor="let stat of stats">
+    <div class="app-stats__cell">
+      <a target="_blank" [attr.href]="stat.steamData.profileurl">
+        <img class="app-stats__avatar" [attr.src]="stat.steamData.avatarmedium">
+      </a>
+    </div>
+    <div class="app-stats__cell app-stats__cell_large">
+      <span class="app-stats__username">{{ stat.steamData.personaname }}</span>
+    </div>
+    <div class="app-stats__cell">{{ stat.playtimeString }}</div>
+    <div class="app-stats__cell">{{ stat.KDA }}</div>
+    <div class="app-stats__cell">{{ stat.kills_player }}</div>
+    <div class="app-stats__cell">{{ stat.deaths_player }}</div>
+    <div class="app-stats__cell">{{ stat.deaths_suicide }}</div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="stat.kills_barrel" [norm]="extractionNorm?.kills_barrel"></app-stats-cell>
+    </div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="stat.harvests_sulfur_ore" [norm]="extractionNorm?.harvests_sulfur_ore"></app-stats-cell>
+    </div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="stat.harvests_metal_ore" [norm]="extractionNorm?.harvests_metal_ore"></app-stats-cell>
+    </div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="stat.harvests_stones" [norm]="extractionNorm?.harvests_stones"></app-stats-cell>
+    </div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="stat.harvests_wood" [norm]="extractionNorm?.harvests_wood"></app-stats-cell>
+    </div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="stat.harvests_leather" [norm]="extractionNorm?.harvests_leather"></app-stats-cell>
+    </div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="stat.harvests_cloth" [norm]="extractionNorm?.harvests_cloth"></app-stats-cell>
+    </div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="stat.harvests_fat_animal" [norm]="extractionNorm?.harvests_fat_animal"></app-stats-cell>
+    </div>
+  </div>
+  <div class="app-stats__row" *ngIf="stats?.length > 1">
+    <div class="app-stats__cell">Итого</div>
+    <div class="app-stats__cell app-stats__cell_large"></div>
+    <div class="app-stats__cell"></div>
+    <div class="app-stats__cell"></div>
+    <div class="app-stats__cell"></div>
+    <div class="app-stats__cell"></div>
+    <div class="app-stats__cell"></div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="getTotal('kills_barrel')"></app-stats-cell>
+    </div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="getTotal('harvests_sulfur_ore')"></app-stats-cell>
+    </div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="getTotal('harvests_metal_ore')"></app-stats-cell>
+    </div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="getTotal('harvests_stones')"></app-stats-cell>
+    </div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="getTotal('harvests_wood')"></app-stats-cell>
+    </div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="getTotal('harvests_leather')"></app-stats-cell>
+    </div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="getTotal('harvests_cloth')"></app-stats-cell>
+    </div>
+    <div class="app-stats__cell">
+      <app-stats-cell [value]="getTotal('harvests_fat_animal')"></app-stats-cell>
+    </div>
+  </div>
+</div>

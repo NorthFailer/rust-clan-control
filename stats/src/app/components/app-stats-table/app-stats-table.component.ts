@@ -1,0 +1,80 @@
+import {ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AppStatsService, StatsModel} from "../../services/app-stats.service";
+import * as html2canvas from 'html2canvas';
+
+@Component({
+  selector: 'app-stats-table',
+  templateUrl: './app-stats-table.component.html',
+  styleUrls: ['./app-stats-table.component.scss']
+})
+export class AppStatsTableComponent implements OnInit {
+  @ViewChild('table') table: ElementRef;
+  @ViewChild('copyInput') copyInput: ElementRef;
+
+  screenShotSrc: any;
+  stats: StatsModel[];
+  extractionNorm;
+  isScreenShotInProgress: boolean = false;
+
+  constructor(private statsService: AppStatsService,
+              private cd: ChangeDetectorRef) { }
+
+  ngOnInit() {
+    this.statsService.getStats().subscribe((statsModels: StatsModel[]) => {
+      this.stats = statsModels.sort((a: StatsModel, b: StatsModel) => {
+        if (a.playtime > b.playtime) {
+          return -1;
+        } else if (a.playtime < b.playtime) {
+          return 1;
+        }
+
+        return 0;
+      });
+      this.cd.detectChanges();
+    });
+
+    this.statsService.getExtractionNorm().subscribe((value) => {
+      this.extractionNorm = value;
+      this.cd.detectChanges();
+    });
+
+    this.statsService.makeScreenShot.subscribe(() => {
+      this.copyScreen();
+    });
+  }
+
+  getTotal(searchKey: string) {
+    let count = 0;
+
+    this.stats.forEach((stats: StatsModel) => {
+      count += stats[searchKey];
+    });
+
+    return count;
+  }
+
+  private copyScreen() {
+    this.isScreenShotInProgress = true;
+
+    html2canvas(this.table.nativeElement, {
+      imageTimeout: 10000,
+      allowTaint: true,
+      async: true,
+      logging: false,
+      scrollY: 0
+    }).then((canvas) => {
+      this.screenShotSrc = canvas.toDataURL('image/png');
+
+      setTimeout(() => {
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(this.copyInput.nativeElement);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand('Copy');
+        this.screenShotSrc = null;
+        this.isScreenShotInProgress = false;
+      }, 0);
+    });
+  }
+}

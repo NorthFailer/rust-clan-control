@@ -1,0 +1,9 @@
+<div class="app-stats-cell__wrapper">
+  <div class="app-stats-cell__higher" *ngIf="state === normStates.higher">+{{ differ | shortThousand }}</div>
+  <div class="app-stats-cell"
+       [ngClass]="{'app-stats-cell_hoverable': hasThousands}"
+       (mouseleave)="changeHover(false)"
+       (mouseover)="changeHover(true)"
+  >{{ hover ? value : (value | shortThousand) }}</div>
+  <div class="app-stats-cell__lower" *ngIf="state === normStates.lower">{{ differ | shortThousand }}</div>
+</div>

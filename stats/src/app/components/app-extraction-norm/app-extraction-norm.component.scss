@@ -1,0 +1,30 @@
+@import "../../../../../popup/src/common/variables";
+
+.app-extraction-norm {
+  margin-top: 20px;
+
+  &__input {
+    background-color: $color-dark-gray;
+    padding: .5rem .75rem;
+    border: none;
+    color: hsla(0,0%,100%,.7);
+    width: 100%;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+
+    &:focus {
+      background-color: $color-gray;
+    }
+  }
+
+  &__group {
+    display: flex;
+    margin-bottom: 10px;
+
+    & > img {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+    }
+  }
+}
