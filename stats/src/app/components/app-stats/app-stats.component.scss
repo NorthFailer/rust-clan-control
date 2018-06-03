@@ -7,55 +7,47 @@
 
     &__content {
         margin: 0 auto;
+        position: relative;
+        width: 680px;
     }
 
-    &__navigation {
-        width: 300px;
-        background: $color-light;
+    &__buttons-box {
+      position: absolute;
+      left: -58px;
+      top: 60px;
     }
 
-    &__table {
-        display: flex;
-        flex-direction: column;
-        margin-top: 84px;
-    }
-
-    &__row {
-        display: flex;
-
-        &:nth-child(odd) {
-            background-color: #2f383e;
-        }
-
-        &_fixed {
-            position: fixed;
-            top: 0;
-        }
-    }
-
-    &__cell {
-        width: 64px;
-        height: 64px;
-        padding: 10px;
-        box-sizing: content-box;
+    &__screen-btn {
+        background-color: $color-dark-gray;
+        width: 38px;
+        height: 38px;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-shrink: 0;
+        cursor: pointer;
+        fill: rgba(255,255,255, .7);
+        border: none;
+        -webkit-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+        border-radius: 3px;
 
-        &_large {
-            width: 100px;
+        &[disabled] {
+          opacity: 0.7;
         }
-    }
 
-    &__username {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+        & > svg {
+          width: 16px;
+          height: 16px;
+        }
 
-    &__icon {
-        width: 64px;
-        height: 64px;
-        vertical-align: bottom;
+        &:not([disabled]):hover {
+          background-color: $color-gray;
+        }
+
+        &:not([disabled]):active {
+          fill: #333;
+          background-color: $color-light;
+        }
     }
 }

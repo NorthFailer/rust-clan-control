@@ -11,7 +11,7 @@ export class StatsModel {
 	}
 
 	get playtimeString(): string {
-		return `${(this.playtime / 60 / 60).toFixed(2)} ч.`;
+		return `${(this.playtime / 60 / 60).toFixed(0)} ч.`;
 	}
 
 	get KDA(): string {
@@ -24,6 +24,8 @@ export class StatsModel {
 	providedIn: 'root'
 })
 export class AppStatsService {
+  makeScreenShot: Subject<any> = new Subject();
+
 	constructor() {
 
 	}
@@ -38,4 +40,15 @@ export class AppStatsService {
 
 		return subject;
 	}
+
+	getExtractionNorm(): Observable<any> {
+    const subject = new Subject<any>();
+
+    chrome.storage.local.get(['extraction-norm'], (result) => {
+      subject.next(result['extraction-norm']);
+      subject.complete();
+    });
+
+    return subject;
+  }
 }

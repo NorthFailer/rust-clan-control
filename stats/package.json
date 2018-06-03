@@ -20,7 +20,9 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@types/html2canvas": "0.0.33",
     "core-js": "^2.5.4",
+    "html2canvas": "^1.0.0-alpha.12",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

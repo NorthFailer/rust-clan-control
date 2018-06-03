@@ -1,5 +1,10 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { AppStatsService, StatsModel } from "../../services/app-stats.service";
+import {ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AppStatsService} from "../../services/app-stats.service";
+
+export enum StatsStates {
+  extractionNorm = 'extractionNorm',
+  stats = 'stats'
+}
 
 @Component({
 	selector: 'app-stats',
@@ -7,27 +12,21 @@ import { AppStatsService, StatsModel } from "../../services/app-stats.service";
 	styleUrls: ['./app-stats.component.scss']
 })
 export class AppStatsComponent implements OnInit {
-	stats: StatsModel[];
+	state: StatsStates = StatsStates.stats;
 
-	constructor(private statsService: AppStatsService,
-	            private cd: ChangeDetectorRef) {
+	readonly statsStates = StatsStates;
+
+	constructor(private cd: ChangeDetectorRef,
+              public statsService: AppStatsService) {
 
 	}
 
 	ngOnInit() {
-		this.statsService.getStats().subscribe((stats: StatsModel[]) => {
-			this.stats = stats;
-			this.cd.detectChanges();
-		});
 	}
 
-	getTotal(searchKey: string) {
-		let count = 0;
+  setState(state: StatsStates) {
+	  this.state = state;
+	  this.cd.detectChanges();
+  }
 
-		this.stats.forEach((stats: StatsModel) => {
-			count += stats[searchKey];
-		});
-
-		return count;
-	}
 }
