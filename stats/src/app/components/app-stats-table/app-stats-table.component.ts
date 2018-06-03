@@ -11,7 +11,6 @@ export class AppStatsTableComponent implements OnInit {
   @ViewChild('table') table: ElementRef;
   @ViewChild('copyInput') copyInput: ElementRef;
 
-  screenShotSrc: any;
   stats: StatsModel[];
   extractionNorm;
   isScreenShotInProgress: boolean = false;
@@ -63,18 +62,10 @@ export class AppStatsTableComponent implements OnInit {
       logging: false,
       scrollY: 0
     }).then((canvas) => {
-      this.screenShotSrc = canvas.toDataURL('image/png');
-
-      setTimeout(() => {
-        const selection = window.getSelection();
-        const range = document.createRange();
-        range.selectNodeContents(this.copyInput.nativeElement);
-        selection.removeAllRanges();
-        selection.addRange(range);
-        document.execCommand('Copy');
-        this.screenShotSrc = null;
-        this.isScreenShotInProgress = false;
-      }, 0);
+	const img = new Image();
+	img.src = canvas.toDataURL('image/png');
+	var myWindow = window.open("", "");
+	myWindow.document.body.appendChild(img);
     });
   }
 }
